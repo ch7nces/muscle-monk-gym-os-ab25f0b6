@@ -31,7 +31,7 @@ function EnquiryWorkspace({ gymId }: { gymId: string }) {
   const update = useServerFn(updateRequest);
   const queryClient = useQueryClient();
   const { data, isPending, error } = useQuery({ queryKey: ["enquiry-workspace", gymId, page], queryFn: () => load({ data: { gymId, page } }) });
-  async function change(input: Parameters<typeof update>[0]['data']) {
+  async function change(input: { kind: "trial"; id: string; gymId: string; status: "pending" | "confirmed" | "completed" | "no_show" | "cancelled" } | { kind: "enquiry"; id: string; gymId: string; handled: boolean }) {
     setBusy(input.id);
     try { await update({ data: input }); await queryClient.invalidateQueries({ queryKey: ["enquiry-workspace", gymId] }); toast.success("Request updated"); }
     catch (e) { toast.error(e instanceof Error ? e.message : "Could not update request"); }
