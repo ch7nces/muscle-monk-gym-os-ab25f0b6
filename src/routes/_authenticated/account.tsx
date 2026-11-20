@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { ArrowLeft, ArrowRight, Check, ClipboardList, LogOut } from "lucide-react";
@@ -21,6 +21,7 @@ function Account() {
   const gym = selected || gyms[0]?.gym_id || "";
   return <main className="site-container py-12 md:py-16"><div className="flex flex-wrap items-start justify-between gap-6"><div><p className="section-eyebrow">GYM OS · SECURE ACCOUNT</p><h1 className="mt-4 font-display text-5xl">HELLO{data.profile?.full_name ? `, ${data.profile.full_name.toUpperCase()}` : ""}.</h1></div><Button variant="outline" onClick={async () => { await queryClient.cancelQueries(); queryClient.clear(); await supabase.auth.signOut(); await navigate({ to: "/auth", replace: true }); }}><LogOut />Sign out</Button></div>
     {data.roles.length === 0 ? <div className="pending-details mt-10"><ClipboardList className="mb-5 size-8 text-primary" /><h2 className="font-display text-3xl">YOUR ACCOUNT IS READY.</h2><p className="mt-4 max-w-xl leading-7 text-muted-foreground">Your account has no gym membership or staff access assigned yet. Contact Muscle Monk to connect your membership or request authorized staff access.</p><p className="mt-3 text-sm text-muted-foreground">Creating an account does not grant owner or staff permissions.</p><Button asChild className="mt-6"><a href="tel:+919755966358">Call +91 97559 66358</a></Button></div> : <div className="mt-10"><div className="flex flex-wrap items-center justify-between gap-5 border-b border-border pb-6"><div><h2 className="font-display text-3xl">{data.roles.find((r) => r.gym_id === gym)?.gyms?.name ?? "Your gym access"}</h2><p className="mt-2 text-sm text-muted-foreground">{data.roles.filter((r) => r.gym_id === gym).map((r) => r.role).join(" · ")}</p></div>{gyms.length > 1 && <Select value={gym} onValueChange={setSelected}><SelectTrigger className="w-64"><SelectValue /></SelectTrigger><SelectContent>{gyms.map((r) => <SelectItem key={r.gym_id + r.role} value={r.gym_id}>{r.gyms?.name ?? r.gym_id}</SelectItem>)}</SelectContent></Select>}</div>{gym ? <EnquiryWorkspace gymId={gym} /> : <p className="mt-8 text-muted-foreground">Your gym role is assigned. Membership and training portals are still in development.</p>}</div>}
+    <Button asChild variant="outline" className="mt-8"><Link to="/dashboard">Open GYM OS dashboard</Link></Button>
   </main>;
 }
 

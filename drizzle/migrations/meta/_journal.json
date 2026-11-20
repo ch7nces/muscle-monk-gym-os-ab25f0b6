@@ -15,6 +15,34 @@
       "when": 1795184148044,
       "tag": "0001_public_foundation_hardening",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795184624222,
+      "tag": "0002_gym_management_and_attendance",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1795184671477,
+      "tag": "0003_content_publication_validation",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1795184913997,
+      "tag": "0004_trainer_photos_and_schedule_validation",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1795185290868,
+      "tag": "0005_scope_photo_object_paths",
+      "breakpoints": true
     }
   ]
 }

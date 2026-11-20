@@ -5,7 +5,11 @@
 - [x] Phase A foundation: public pages, enquiries and trial bookings; submissions, staff read-back and updates verified in Cloud.
 - [x] Password sign-in, sign-out, protected account workspace, tenant isolation and request limits verified.
 - [ ] Phase B verification: email confirmation, recovery-email round-trip and Google/Lovable provider round-trips require real user interaction.
-- [ ] Owner access: designated email ehmadhav@gmail.com — waiting for this account to sign up and verify its email; no matching account exists yet.
+- [x] Owner access: verified ehmadhav@gmail.com account assigned Muscle Monk owner access; dashboard verified signed in.
 - [ ] Existing data recovery — waiting for original records/user exports, if any.
-- [ ] Confirm website details — waiting for facilities, prices, hours, trainers and approved reviews.
-- [ ] Next development phases C–H: management dashboard, members, QR attendance, invoices, finance, portals and growth; not implemented in this public-foundation phase.
+- [x] Editable content: eight hidden provisional facilities, five unpriced plans, trainer profiles/private photo uploads, and weekly opening hours.
+- [x] Management dashboard and tenant-scoped member creation/editing, verified-account linking and status/date management.
+- [x] Secure member/entrance QR attendance: image and simulated live-camera decoding, database read-back, replay/expiry/cooldown rejection, 30-second entrance rotation and 60-second member validity verified in an isolated gym.
+- [ ] Physical phone camera and on-site attendance acceptance — requires owner testing at the gym.
+- [ ] Confirm public details — owner can verify facilities, prices, hours and trainers without code changes.
+- [ ] Later phases: invoices, finance, expanded portals and growth.
