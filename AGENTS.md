@@ -34,3 +34,6 @@ use the editor.
 - Keep the original SQL as reference; new schema uses reviewed tenant policies and no unrestricted owner-claim endpoint, preventing public account takeover.
 - Public content is read through anonymous-policy-scoped server functions; public forms use validated, atomic database functions with per-contact rate limits and no public private-record reads.
 - Each public content page has its own TanStack route and metadata; reusable public shell and forms remain shared to keep the website consistent.
+- Content edits use authenticated, RLS-scoped functions; facility verification and price publication gates also run in database triggers so direct requests cannot bypass them.
+- Attendance uses hashed, short-lived database tokens and atomic redemption with membership locks, replay protection, scan limits and audit records; never accept client timestamps or identity as check-in proof.
+- Membership account linking uses verified auth emails through a staff-authorized database function, not editable profile metadata.
