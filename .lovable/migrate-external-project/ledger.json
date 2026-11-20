@@ -1,0 +1,20 @@
+{
+  "source": "https://github.com/ch7nces/muscle-monk-gym-os",
+  "revision": "c4adc01",
+  "capabilities": [
+    {"capability":"code","source":"main branch","outcome":"Preserve available theme, photo, controls, and schema reference; source home page is a template placeholder","status":"partial","next_action":"Supply repository or ZIP containing the actual gym application pages"},
+    {"capability":"schema","source":"drizzle/migrations/0000_migration.sql","outcome":"preserved as reference, not applied","status":"pending","next_action":"Review ownership bootstrap and identity-linking permissions before activating with the complete application"},
+    {"capability":"records","source":"No record exports bundled","outcome":"pending migration to Lovable Cloud","status":"pending","next_action":"Supply CSV or JSON application record exports if existing data should migrate"},
+    {"capability":"auth identities","source":"Generated auth integration only; no sign-in pages or user export","outcome":"Cloud connected; existing identities not imported","status":"pending","next_action":"Supply complete application and user export; verify email and new-password flow"},
+    {"capability":"authorization","source":"SQL roles and policies","outcome":"preserved as inactive reference","status":"pending","next_action":"Resolve unrestricted first-owner claim and ambiguous email matching before deployment"},
+    {"capability":"uploaded file bytes","source":"src/assets/hero-gym.jpg","outcome":"bundled gym photo imported; no upload exports detected","status":"verified","next_action":"Supply existing uploads if applicable"},
+    {"capability":"external providers","source":"No application call sites","outcome":"No payment, AI, email, or analytics provider usage detected","status":"not_detected","next_action":"Inspect complete source when supplied"},
+    {"capability":"public endpoints","source":"Only root and index route files","outcome":"No public API endpoints detected","status":"not_detected","next_action":"Inspect complete source when supplied"},
+    {"capability":"callbacks","source":"No application callbacks","outcome":"None detected","status":"not_detected","next_action":"Inspect complete source when supplied"},
+    {"capability":"webhooks","source":"No webhook handlers","outcome":"None detected","status":"not_detected","next_action":"Inspect complete source when supplied"},
+    {"capability":"schedules","source":"No job definitions","outcome":"None detected","status":"not_detected","next_action":"Inspect complete source when supplied"},
+    {"capability":"secrets","source":"Source .env excluded","outcome":"Source credentials not copied; target uses generated Cloud bindings","status":"verified","next_action":"Request retained-provider secrets securely only if complete source needs them"},
+    {"capability":"cutover","source":"No published source URL","outcome":"Not published; no service cutover attempted","status":"pending","next_action":"Supply complete application before publishing"},
+    {"capability":"verification","source":"Import preview and routing test","outcome":"Pending preview check; actual gym workflows blocked by missing source","status":"pending","next_action":"Verify import preview, then verify gym workflows once their source is available"}
+  ]
+}
