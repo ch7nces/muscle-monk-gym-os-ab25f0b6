@@ -31,4 +31,6 @@ use the editor.
 
 ## Import boundaries
 - Keep the target TanStack runtime and generated Cloud integrations; imported source must not replace project bindings or pinned framework versions.
-- Preserve incomplete source schema as an inactive reference until its ownership and identity-linking rules are reviewed; the import-status page must not imply that missing gym workflows exist.
+- Keep the original SQL as reference; new schema uses reviewed tenant policies and no unrestricted owner-claim endpoint, preventing public account takeover.
+- Public content is read through anonymous-policy-scoped server functions; public forms use validated, atomic database functions with per-contact rate limits and no public private-record reads.
+- Each public content page has its own TanStack route and metadata; reusable public shell and forms remain shared to keep the website consistent.

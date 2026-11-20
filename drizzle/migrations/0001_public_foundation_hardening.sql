@@ -1,0 +1,18 @@
+revoke all on function public.handle_new_user() from public,anon,authenticated;
+create function public.validate_contact_fields() returns trigger language plpgsql set search_path=public as $$ begin if length(trim(new.full_name)) not between 2 and 120 or new.phone !~ '^\+?[0-9]{10,15}$' or (new.email is not null and (length(new.email)>254 or new.email !~ '^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$')) then raise exception 'Please check your contact details'; end if; return new; end $$;
+create trigger validate_lead before insert or update on public.leads for each row execute function public.validate_contact_fields();
+create trigger validate_trial before insert or update on public.trial_bookings for each row execute function public.validate_contact_fields();
+create trigger validate_enquiry before insert or update on public.contact_messages for each row execute function public.validate_contact_fields();
+create function public.audit_request_update() returns trigger language plpgsql security definer set search_path=public as $$ begin insert into public.audit_logs(gym_id,actor_id,action,entity,entity_id) values(new.gym_id,auth.uid(),'request.updated',tg_table_name,new.id); return new; end $$;
+revoke all on function public.audit_request_update() from public,anon,authenticated;
+create trigger trial_update_audit after update on public.trial_bookings for each row execute function public.audit_request_update();
+create trigger contact_update_audit after update on public.contact_messages for each row execute function public.audit_request_update();
+create index membership_plans_gym_idx on public.membership_plans(gym_id);
+create index facilities_gym_idx on public.facilities(gym_id);
+create index trainers_gym_idx on public.trainers(gym_id);
+create index testimonials_gym_idx on public.testimonials(gym_id);
+create index stories_gym_idx on public.transformation_stories(gym_id);
+create index faqs_gym_idx on public.faqs(gym_id);
+create index audit_gym_idx on public.audit_logs(gym_id,created_at desc);
+create index roles_gym_idx on public.user_roles(gym_id);
+create index trial_lead_idx on public.trial_bookings(lead_id);

@@ -12,6 +12,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Toaster } from "@/components/ui/sonner";
+import { SessionProvider } from "@/components/gym/session-provider";
+import { SiteShell } from "@/components/gym/site-shell";
 
 function NotFoundComponent() {
   return (
@@ -82,9 +85,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Muscle Monk Gym OS" },
-      { name: "description", content: "Muscle Monk Gym OS source import." },
+      { name: "description", content: "Muscle Monk Gymnasium, Rau, Indore. Build strength. Break limits." },
       { property: "og:title", content: "Muscle Monk Gym OS" },
-      { property: "og:description", content: "Muscle Monk Gym OS source import." },
+      { property: "og:description", content: "Muscle Monk Gymnasium, Rau, Indore. Build strength. Break limits." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -123,8 +126,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <SessionProvider><SiteShell><Outlet /></SiteShell><Toaster /></SessionProvider>
     </QueryClientProvider>
   );
 }
