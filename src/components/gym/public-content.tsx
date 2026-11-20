@@ -6,6 +6,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { mapsUrl, whatsappUrl } from "@/lib/gym";
 import { publicGymOptions } from "@/lib/gym.functions";
 import { RequestForm } from "./request-form";
+import { z } from "zod";
+
+function OpeningHours({ settings }: { settings: { hours: unknown; hours_confirmed: boolean } | null }) {
+  const parsed = z.array(z.object({ day: z.string(), closed: z.boolean(), open: z.string(), close: z.string() })).safeParse(settings?.hours);
+  if (!settings?.hours_confirmed || !parsed.success || parsed.data.length !== 7) return <p className="mt-2 text-sm text-muted-foreground">Contact us for current opening hours.</p>;
+  return <dl className="mt-3 space-y-2 text-sm">{parsed.data.map(h => <div key={h.day} className="flex justify-between gap-8"><dt>{h.day}</dt><dd className="text-muted-foreground">{h.closed ? "Closed" : `${h.open} – ${h.close}`}</dd></div>)}</dl>;
+}
 
 export type PublicSection = "about" | "facilities" | "memberships" | "trainers" | "stories" | "reviews" | "trial" | "faq" | "contact";
 const headings: Record<PublicSection, { eyebrow: string; title: string; intro: string }> = {

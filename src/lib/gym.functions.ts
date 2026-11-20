@@ -20,8 +20,8 @@ export const getPublicGym = createServerFn({ method: "GET" }).handler(async () =
   const { data: gym, error } = await client.from("gyms").select("id, name, name_hi, address, city, state, postal_code, phone, whatsapp").eq("slug", gymSlug).single();
   if (error || !gym) throw new Error("Gym details are temporarily unavailable. Please try again.");
   const [settings, plans, facilities, trainers, reviews, stories, faqs] = await Promise.all([
-    client.from("gym_settings").select("hours, about_text, trial_slots").eq("gym_id", gym.id).single(),
-    client.from("membership_plans").select("id,name,price,joining_fee,duration_days,features,is_recommended").eq("gym_id", gym.id).eq("is_published", true).is("archived_at", null).order("sort_order"),
+    client.from("gym_settings").select("hours, hours_confirmed, about_text, trial_slots").eq("gym_id", gym.id).single(),
+    client.from("membership_plans").select("id,name,amount,joining_fee,duration_days,features,is_recommended").eq("gym_id", gym.id).eq("is_published", true).not("amount", "is", null).is("archived_at", null).order("sort_order"),
     client.from("facilities").select("id,name,description,image_url").eq("gym_id", gym.id).eq("is_published", true).order("sort_order"),
     client.from("trainers").select("id,full_name,specialization,qualifications,photo_url,experience_years").eq("gym_id", gym.id).eq("is_published", true).eq("is_active", true),
     client.from("testimonials").select("id,author_name,quote,rating,source").eq("gym_id", gym.id).eq("is_published", true).eq("consent_confirmed", true),
