@@ -14,6 +14,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     let active = true;
     void supabase.auth.getUser().then(({ data }) => { if (active) { setUser(data.user); setReady(true); } });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "PASSWORD_RECOVERY") sessionStorage.setItem("gym-password-recovery", "true");
+      if (event === "SIGNED_OUT") sessionStorage.removeItem("gym-password-recovery");
       if (active) { setUser(session?.user ?? null); setReady(true); }
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
       void router.invalidate();
