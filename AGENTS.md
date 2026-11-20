@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Import boundaries
+- Keep the target TanStack runtime and generated Cloud integrations; imported source must not replace project bindings or pinned framework versions.
+- Preserve incomplete source schema as an inactive reference until its ownership and identity-linking rules are reviewed; the import-status page must not imply that missing gym workflows exist.
