@@ -1,0 +1,212 @@
+{
+  "artifact": {
+    "expanded_bytes": 693170,
+    "file_count": 93,
+    "name": "muscle-monk.zip",
+    "root": "ch7nces-muscle-monk-gym-os-c4adc01"
+  },
+  "environment_variables": [
+    "LOVABLE_DB_MIGRATION_URL"
+  ],
+  "packages": [
+    {
+      "dependencies": [
+        "@hookform/resolvers",
+        "@lovable.dev/cloud-auth-js",
+        "@radix-ui/react-accordion",
+        "@radix-ui/react-alert-dialog",
+        "@radix-ui/react-aspect-ratio",
+        "@radix-ui/react-avatar",
+        "@radix-ui/react-checkbox",
+        "@radix-ui/react-collapsible",
+        "@radix-ui/react-context-menu",
+        "@radix-ui/react-dialog",
+        "@radix-ui/react-dropdown-menu",
+        "@radix-ui/react-hover-card",
+        "@radix-ui/react-label",
+        "@radix-ui/react-menubar",
+        "@radix-ui/react-navigation-menu",
+        "@radix-ui/react-popover",
+        "@radix-ui/react-progress",
+        "@radix-ui/react-radio-group",
+        "@radix-ui/react-scroll-area",
+        "@radix-ui/react-select",
+        "@radix-ui/react-separator",
+        "@radix-ui/react-slider",
+        "@radix-ui/react-slot",
+        "@radix-ui/react-switch",
+        "@radix-ui/react-tabs",
+        "@radix-ui/react-toggle",
+        "@radix-ui/react-toggle-group",
+        "@radix-ui/react-tooltip",
+        "@supabase/supabase-js",
+        "@tailwindcss/vite",
+        "@tanstack/react-query",
+        "@tanstack/react-router",
+        "@tanstack/react-start",
+        "@tanstack/router-plugin",
+        "@yudiel/react-qr-scanner",
+        "class-variance-authority",
+        "clsx",
+        "cmdk",
+        "date-fns",
+        "embla-carousel-react",
+        "input-otp",
+        "lucide-react",
+        "qrcode.react",
+        "react",
+        "react-day-picker",
+        "react-dom",
+        "react-hook-form",
+        "react-resizable-panels",
+        "recharts",
+        "sonner",
+        "tailwind-merge",
+        "tailwindcss",
+        "tw-animate-css",
+        "vaul",
+        "vite-tsconfig-paths",
+        "zod"
+      ],
+      "dev_dependencies": [
+        "@eslint/js",
+        "@lovable.dev/vite-tanstack-config",
+        "@testing-library/jest-dom",
+        "@testing-library/react",
+        "@types/node",
+        "@types/react",
+        "@types/react-dom",
+        "@vitejs/plugin-react",
+        "drizzle-kit",
+        "drizzle-orm",
+        "eslint",
+        "eslint-config-prettier",
+        "eslint-plugin-prettier",
+        "eslint-plugin-react-hooks",
+        "eslint-plugin-react-refresh",
+        "globals",
+        "jsdom",
+        "nitro",
+        "postgres",
+        "prettier",
+        "typescript",
+        "typescript-eslint",
+        "vite",
+        "vitest"
+      ],
+      "package_manager": null,
+      "path": "package.json",
+      "scripts": [
+        "build",
+        "dev"
+      ]
+    }
+  ],
+  "record_export": {
+    "coverage": "absent",
+    "manifest": null,
+    "tables": []
+  },
+  "routes": [],
+  "safety": {
+    "executed_source_code": false,
+    "sensitive_files_excluded": [
+      ".env"
+    ]
+  },
+  "schema_source": "migration",
+  "schema_tables": [
+    {
+      "name": "gyms",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "gym_settings",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "profiles",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "user_roles",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "audit_logs",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "membership_plans",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "facilities",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "trainers",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "testimonials",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "faqs",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "members",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "memberships",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "payments",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "expenses",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "leads",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "trial_bookings",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "contact_messages",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "attendance",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "attendance_checkin_tokens",
+      "path": "drizzle/migrations/0000_migration.sql"
+    },
+    {
+      "name": "attendance_qr_challenges",
+      "path": "drizzle/migrations/0000_migration.sql"
+    }
+  ],
+  "schema_version": 1,
+  "source": "github",
+  "source_artifacts": [
+    "drizzle.config.ts",
+    "drizzle/migrations/0000_migration.sql",
+    "drizzle/migrations/meta/0000_snapshot.json",
+    "drizzle/migrations/meta/_journal.json"
+  ],
+  "warnings": [
+    "Schema tables were inferred from migration files and may be historical",
+    "Sensitive-looking files were excluded from content inspection"
+  ]
+}
