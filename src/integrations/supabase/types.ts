@@ -14,6 +14,147 @@ export type Database = {
   }
   public: {
     Tables: {
+      attendance: {
+        Row: {
+          actor_id: string
+          checked_in_at: string
+          gym_id: string
+          id: string
+          member_id: string
+          method: string
+        }
+        Insert: {
+          actor_id: string
+          checked_in_at?: string
+          gym_id: string
+          id?: string
+          member_id: string
+          method: string
+        }
+        Update: {
+          actor_id?: string
+          checked_in_at?: string
+          gym_id?: string
+          id?: string
+          member_id?: string
+          method?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "attendance_gym_id_fkey"
+            columns: ["gym_id"]
+            isOneToOne: false
+            referencedRelation: "gyms"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "attendance_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      attendance_attempts: {
+        Row: {
+          actor_id: string
+          created_at: string
+          id: string
+        }
+        Insert: {
+          actor_id: string
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          actor_id?: string
+          created_at?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      attendance_redemptions: {
+        Row: {
+          member_id: string
+          token_id: string
+        }
+        Insert: {
+          member_id: string
+          token_id: string
+        }
+        Update: {
+          member_id?: string
+          token_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "attendance_redemptions_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "members"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "attendance_redemptions_token_id_fkey"
+            columns: ["token_id"]
+            isOneToOne: false
+            referencedRelation: "attendance_tokens"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      attendance_tokens: {
+        Row: {
+          created_at: string
+          expires_at: string
+          gym_id: string
+          id: string
+          issued_by: string
+          kind: string
+          member_id: string | null
+          token_hash: string
+          used_at: string | null
+        }
+        Insert: {
+          created_at?: string
+          expires_at: string
+          gym_id: string
+          id?: string
+          issued_by: string
+          kind: string
+          member_id?: string | null
+          token_hash: string
+          used_at?: string | null
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string
+          gym_id?: string
+          id?: string
+          issued_by?: string
+          kind?: string
+          member_id?: string | null
+          token_hash?: string
+          used_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "attendance_tokens_gym_id_fkey"
+            columns: ["gym_id"]
+            isOneToOne: false
+            referencedRelation: "gyms"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "attendance_tokens_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       audit_logs: {
         Row: {
           action: string
@@ -103,6 +244,7 @@ export type Database = {
           id: string
           image_url: string | null
           is_published: boolean
+          is_verified: boolean
           name: string
           sort_order: number
         }
@@ -112,6 +254,7 @@ export type Database = {
           id?: string
           image_url?: string | null
           is_published?: boolean
+          is_verified?: boolean
           name: string
           sort_order?: number
         }
@@ -121,6 +264,7 @@ export type Database = {
           id?: string
           image_url?: string | null
           is_published?: boolean
+          is_verified?: boolean
           name?: string
           sort_order?: number
         }
@@ -177,6 +321,7 @@ export type Database = {
           expiring_soon_days: number
           gym_id: string
           hours: Json
+          hours_confirmed: boolean
           trial_slot_capacity: number
           trial_slots: Json
           updated_at: string
@@ -188,6 +333,7 @@ export type Database = {
           expiring_soon_days?: number
           gym_id: string
           hours?: Json
+          hours_confirmed?: boolean
           trial_slot_capacity?: number
           trial_slots?: Json
           updated_at?: string
@@ -199,6 +345,7 @@ export type Database = {
           expiring_soon_days?: number
           gym_id?: string
           hours?: Json
+          hours_confirmed?: boolean
           trial_slot_capacity?: number
           trial_slots?: Json
           updated_at?: string
@@ -311,8 +458,66 @@ export type Database = {
           },
         ]
       }
+      members: {
+        Row: {
+          created_at: string
+          email: string | null
+          ends_on: string
+          full_name: string
+          gym_id: string
+          id: string
+          phone: string
+          plan_id: string | null
+          starts_on: string
+          status: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          ends_on: string
+          full_name: string
+          gym_id: string
+          id?: string
+          phone: string
+          plan_id?: string | null
+          starts_on: string
+          status?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          ends_on?: string
+          full_name?: string
+          gym_id?: string
+          id?: string
+          phone?: string
+          plan_id?: string | null
+          starts_on?: string
+          status?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "members_gym_id_fkey"
+            columns: ["gym_id"]
+            isOneToOne: false
+            referencedRelation: "gyms"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "members_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "membership_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       membership_plans: {
         Row: {
+          amount: number | null
           archived_at: string | null
           category: string
           duration_days: number
@@ -327,6 +532,7 @@ export type Database = {
           sort_order: number
         }
         Insert: {
+          amount?: number | null
           archived_at?: string | null
           category?: string
           duration_days: number
@@ -341,6 +547,7 @@ export type Database = {
           sort_order?: number
         }
         Update: {
+          amount?: number | null
           archived_at?: string | null
           category?: string
           duration_days?: number
@@ -608,6 +815,18 @@ export type Database = {
           _roles: Database["public"]["Enums"]["app_role"][]
         }
         Returns: boolean
+      }
+      issue_attendance_token: {
+        Args: { _gym: string; _kind: string }
+        Returns: Json
+      }
+      link_member_account: {
+        Args: { _email: string; _gym: string; _member: string }
+        Returns: boolean
+      }
+      redeem_attendance_token: {
+        Args: { _gym: string; _token: string }
+        Returns: Json
       }
       submit_public_request: {
         Args: {

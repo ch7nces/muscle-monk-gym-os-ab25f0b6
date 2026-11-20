@@ -15,6 +15,13 @@
       "when": 1795184148044,
       "tag": "0001_public_foundation_hardening",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795184624222,
+      "tag": "0002_gym_management_and_attendance",
+      "breakpoints": true
     }
   ]
 }
