@@ -6,6 +6,8 @@
 - [x] Password sign-in, sign-out, protected account workspace, tenant isolation and request limits verified.
 - [ ] Phase B verification: email confirmation, recovery-email round-trip and Google/Lovable provider round-trips require real user interaction.
 - [x] Owner access: verified ehmadhav@gmail.com account assigned Muscle Monk owner access; dashboard verified signed in.
+- [x] Reconfirm signed-in owner access for ehmadhav@gmail.com.
+- [ ] Test member access — waiting for a designated member email/account; passwords must be chosen privately, not shared in chat.
 - [ ] Existing data recovery — waiting for original records/user exports, if any.
 - [x] Editable content: eight hidden provisional facilities, five unpriced plans, trainer profiles/private photo uploads, and weekly opening hours.
 - [x] Management dashboard and tenant-scoped member creation/editing, verified-account linking and status/date management.
