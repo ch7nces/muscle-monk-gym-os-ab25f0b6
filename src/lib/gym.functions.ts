@@ -34,7 +34,7 @@ export const getPublicGym = createServerFn({ method: "GET" }).handler(async () =
     const signed = await client.storage.from("gym-photos").createSignedUrl(trainer.photo_path, 3600);
     if (!signed.data) return { ...trainer, photo_url: null };
     const signedUrl = new URL(signed.data.signedUrl);
-    const browserUrl = import.meta.env.VITE_SUPABASE_URL;
+    const browserUrl = import.meta.env['VITE_SUPABASE_URL'];
     return { ...trainer, photo_url: browserUrl ? `${browserUrl}${signedUrl.pathname}${signedUrl.search}` : signed.data.signedUrl };
   }));
   return { gym, settings: settings.data, plans: plans.data ?? [], facilities: facilities.data ?? [], trainers: publishedTrainers, reviews: reviews.data ?? [], stories: stories.data ?? [], faqs: faqs.data ?? [] };
