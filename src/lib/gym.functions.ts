@@ -23,13 +23,21 @@ export const getPublicGym = createServerFn({ method: "GET" }).handler(async () =
     client.from("gym_settings").select("hours, hours_confirmed, about_text, trial_slots").eq("gym_id", gym.id).single(),
     client.from("membership_plans").select("id,name,amount,joining_fee,duration_days,features,is_recommended").eq("gym_id", gym.id).eq("is_published", true).not("amount", "is", null).is("archived_at", null).order("sort_order"),
     client.from("facilities").select("id,name,description,image_url").eq("gym_id", gym.id).eq("is_published", true).order("sort_order"),
-    client.from("trainers").select("id,full_name,specialization,qualifications,photo_url,experience_years").eq("gym_id", gym.id).eq("is_published", true).eq("is_active", true),
+    client.from("trainers").select("id,full_name,specialization,qualifications,photo_url,photo_path,experience_years").eq("gym_id", gym.id).eq("is_published", true).eq("is_active", true),
     client.from("testimonials").select("id,author_name,quote,rating,source").eq("gym_id", gym.id).eq("is_published", true).eq("consent_confirmed", true),
     client.from("transformation_stories").select("id,title,story,image_url").eq("gym_id", gym.id).eq("is_published", true).eq("consent_confirmed", true),
     client.from("faqs").select("id,question,answer").eq("gym_id", gym.id).eq("is_published", true).order("sort_order"),
   ]);
   if ([settings, plans, facilities, trainers, reviews, stories, faqs].some((result) => result.error)) throw new Error("Website details could not load. Please try again.");
-  return { gym, settings: settings.data, plans: plans.data ?? [], facilities: facilities.data ?? [], trainers: trainers.data ?? [], reviews: reviews.data ?? [], stories: stories.data ?? [], faqs: faqs.data ?? [] };
+  const publishedTrainers = await Promise.all((trainers.data ?? []).map(async trainer => {
+    if (!trainer.photo_path) return trainer;
+    const signed = await client.storage.from("gym-photos").createSignedUrl(trainer.photo_path, 3600);
+    if (!signed.data) return { ...trainer, photo_url: null };
+    const signedUrl = new URL(signed.data.signedUrl);
+    const browserUrl = import.meta.env.VITE_SUPABASE_URL;
+    return { ...trainer, photo_url: browserUrl ? `${browserUrl}${signedUrl.pathname}${signedUrl.search}` : signed.data.signedUrl };
+  }));
+  return { gym, settings: settings.data, plans: plans.data ?? [], facilities: facilities.data ?? [], trainers: publishedTrainers, reviews: reviews.data ?? [], stories: stories.data ?? [], faqs: faqs.data ?? [] };
 });
 
 export const publicGymOptions = queryOptions({ queryKey: ["public-gym", gymSlug], queryFn: () => getPublicGym(), staleTime: 60_000 });

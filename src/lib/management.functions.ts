@@ -33,7 +33,7 @@ export const savePlan = createServerFn({ method: "POST" }).middleware([requireSu
   if (result.error) throw new Error("Plan could not be saved. Owner or manager access is required."); return { ok: true };
 });
 export const saveTrainer = createServerFn({ method: "POST" }).middleware([requireSupabaseAuth]).inputValidator((v: unknown) => trainerSchema.parse(v)).handler(async ({ data, context }) => {
-  const row = { gym_id: data.gymId, full_name: data.name, specialization: data.specialization, qualifications: data.qualifications, experience_years: data.experience, photo_url: data.photo || null, is_active: data.active, is_published: data.published };
+  const row = { gym_id: data.gymId, full_name: data.name, specialization: data.specialization, qualifications: data.qualifications, experience_years: data.experience, photo_url: data.photo || null, photo_path: data.photoPath || null, is_active: data.active, is_published: data.published };
   const result = data.id ? await context.supabase.from("trainers").update(row).eq("id", data.id).eq("gym_id",data.gymId).select("id").single() : await context.supabase.from("trainers").insert(row).select("id").single();
   if (result.error) throw new Error("Trainer could not be saved. Owner or manager access is required."); return { ok: true };
 });
