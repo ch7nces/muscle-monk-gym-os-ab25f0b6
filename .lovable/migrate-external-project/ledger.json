@@ -15,6 +15,6 @@
     {"capability":"schedules","source":"No job definitions","outcome":"None detected","status":"not_detected","next_action":"Inspect complete source when supplied"},
     {"capability":"secrets","source":"Source .env excluded","outcome":"Source credentials not copied; target uses generated Cloud bindings","status":"verified","next_action":"Request retained-provider secrets securely only if complete source needs them"},
     {"capability":"cutover","source":"No published source URL","outcome":"Not published; no service cutover attempted","status":"pending","next_action":"Supply complete application before publishing"},
-    {"capability":"verification","source":"Import preview and routing test","outcome":"Pending preview check; actual gym workflows blocked by missing source","status":"pending","next_action":"Verify import preview, then verify gym workflows once their source is available"}
+    {"capability":"verification","source":"Import preview and routing test","outcome":"Build OK; routing test passed; desktop and phone preview show the original photo without overflow or runtime errors; gym workflows absent from source","status":"partial","next_action":"Verify gym workflows once their source is available"}
   ]
 }
