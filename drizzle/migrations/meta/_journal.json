@@ -36,6 +36,13 @@
       "when": 1795184913997,
       "tag": "0004_trainer_photos_and_schedule_validation",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1795185290868,
+      "tag": "0005_scope_photo_object_paths",
+      "breakpoints": true
     }
   ]
 }
