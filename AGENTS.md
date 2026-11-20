@@ -37,3 +37,4 @@ use the editor.
 - Content edits use authenticated, RLS-scoped functions; facility verification and price publication gates also run in database triggers so direct requests cannot bypass them.
 - Attendance uses hashed, short-lived database tokens and atomic redemption with membership locks, replay protection, scan limits and audit records; never accept client timestamps or identity as check-in proof.
 - Membership account linking uses verified auth emails through a staff-authorized database function, not editable profile metadata.
+- Keep trainer uploads in private storage with gym-folder policies; public reads sign only published active trainer photos, because workspace policy blocks public buckets.
