@@ -7,5 +7,8 @@
 - [ ] Phase B verification: email confirmation, recovery-email round-trip and Google/Lovable provider round-trips require real user interaction.
 - [ ] Owner access: designated email ehmadhav@gmail.com — waiting for this account to sign up and verify its email; no matching account exists yet.
 - [ ] Existing data recovery — waiting for original records/user exports, if any.
-- [ ] Confirm website details — waiting for facilities, prices, hours, trainers and approved reviews.
-- [ ] Next development phases C–H: management dashboard, members, QR attendance, invoices, finance, portals and growth; not implemented in this public-foundation phase.
+- [ ] Editable content: hidden provisional facilities, configurable unpriced plans, trainer management, and weekly opening hours.
+- [ ] Management dashboard and tenant-scoped member management.
+- [ ] Secure member/entrance QR attendance with end-to-end verification.
+- [ ] Confirm public details — owner can verify facilities, prices, hours and trainers without code changes.
+- [ ] Later phases: invoices, finance, expanded portals and growth.
