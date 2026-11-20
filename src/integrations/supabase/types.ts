@@ -641,6 +641,7 @@ export type Database = {
           id: string
           is_active: boolean
           is_published: boolean
+          photo_path: string | null
           photo_url: string | null
           qualifications: string | null
           specialization: string | null
@@ -653,6 +654,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           is_published?: boolean
+          photo_path?: string | null
           photo_url?: string | null
           qualifications?: string | null
           specialization?: string | null
@@ -665,6 +667,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           is_published?: boolean
+          photo_path?: string | null
           photo_url?: string | null
           qualifications?: string | null
           specialization?: string | null
