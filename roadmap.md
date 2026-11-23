@@ -1,5 +1,11 @@
 # GYM OS recovery and development
 
+## Phase 2 priorities
+- [ ] Priority 1: verify owner role; replace legacy attendance with camera-only single-entrance scanning, presence checks, staff exceptions, security events and home dashboards; execute security scenarios.
+- [ ] Owner-confirmed gym coordinates and on-site phone acceptance — awaiting owner location verification.
+- [ ] Priority 2: renewals, finance, expenses and comprehensive owner analytics — follows verified Priority 1.
+- [ ] Priority 3: trainer/workouts, retention CRM, consent-based WhatsApp and advanced reports — follows Priority 2.
+
 - [x] Inspect saved code, migrations, live schema, roles, functions, users, and storage.
 - [x] Preserve target runtime, controls, theme, and existing gym image.
 - [x] Phase A foundation: public pages, enquiries and trial bookings; submissions, staff read-back and updates verified in Cloud.
