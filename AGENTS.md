@@ -35,6 +35,6 @@ use the editor.
 - Public content is read through anonymous-policy-scoped server functions; public forms use validated, atomic database functions with per-contact rate limits and no public private-record reads.
 - Each public content page has its own TanStack route and metadata; reusable public shell and forms remain shared to keep the website consistent.
 - Content edits use authenticated, RLS-scoped functions; facility verification and price publication gates also run in database triggers so direct requests cannot bypass them.
-- Attendance uses hashed, short-lived database tokens and atomic redemption with membership locks, replay protection, scan limits and audit records; never accept client timestamps or identity as check-in proof.
+- Attendance reuses attendance/tokens/attempts behind authenticated database functions, with a singleton gym point, hashed challenges, member locks, a daily unique key, persisted denials, and audited staff exceptions; legacy redemption is disabled so no alternate presence bypass remains. Browser camera, coordinates and device IDs are signals, never physical-presence proof.
 - Membership account linking uses verified auth emails through a staff-authorized database function, not editable profile metadata.
 - Keep trainer uploads in private storage with gym-folder policies; public reads sign only published active trainer photos, because workspace policy blocks public buckets.

@@ -43,6 +43,13 @@
       "when": 1795185290868,
       "tag": "0005_scope_photo_object_paths",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1795401367308,
+      "tag": "0006_single_entrance_presence_attendance",
+      "breakpoints": true
     }
   ]
 }
